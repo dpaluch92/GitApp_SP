@@ -33,7 +33,38 @@
 	};
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+.danger {
+  border-color: #f44336;
+  color: red
+}
+
+.danger:hover {
+  background: #f44336;
+  color: white;
+}
+
+.info {
+  border-color: #2196F3;
+  color: dodgerblue
+}
+
+.info:hover {
+  background: #2196F3;
+  color: white;
+}
+
+.content {
+  padding: 20px;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -100,14 +131,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-02-04 11:34:28</sys_created_on>
         <sys_id>fd8a9d270fd72300ebdfba8ce1050e98</sys_id>
-        <sys_mod_count>69</sys_mod_count>
+        <sys_mod_count>130</sys_mod_count>
         <sys_name>GitApp_List</sys_name>
         <sys_package display_value="GitApp_SP" source="x_244499_gitapp_sp">041a19e30fd72300ebdfba8ce1050e36</sys_package>
         <sys_policy/>
         <sys_scope display_value="GitApp_SP">041a19e30fd72300ebdfba8ce1050e36</sys_scope>
         <sys_update_name>sp_widget_fd8a9d270fd72300ebdfba8ce1050e98</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-02-04 16:48:01</sys_updated_on>
+        <sys_updated_on>2019-02-04 17:48:28</sys_updated_on>
         <template><![CDATA[<div class="container">
   <div class="row">
 
@@ -131,15 +162,20 @@
         <div class="panel panel-default">
           <div class="panel-body m-b-n">
             <ul class="list-group">
-              <li class="list-group-item" 
+
+              <li class="list-group-item content" 
                   ng-repeat="x in c.data.numbers track by $index">    
-                <a> {{x}} 
-                  <div class="pull-right">
-                    <a href="" class="fa fa-edit"></a>&nbsp;
-                    <a href="" class="fa fa-remove text-danger" ng-click="c.remove(x,$index)"></a>
-                  </div>
-                </a>
+                <span>{{x}}</span>
+                <span class="pull-right">
+                  <button class="btn info">
+                    Edit &nbsp;<span class="fa fa-edit"></span>
+                  </button>
+                  <button class="btn danger" ng-click="c.remove(x,$index)">
+                    Delete &nbsp;<span class="fa fa-remove"></span>
+                  </button>
+                </span>
               </li>
+
             </ul>
           </div>
         </div>
