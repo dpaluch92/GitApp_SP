@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+	/* widget controller */
+	var c = this;
+
+	c.server.update().then(function(){
+		c.data.action = undefined;
+	});
+
+	c.refresh = function() {
+		c.data.action = "refreshList";
+		c.server.update().then(function(){
+			c.data.action = undefined;
+		});
+	};
+
+	c.remove = function(x,index){
+		c.data.number = x;
+		c.data.index = index;
+		c.data.action = "removeElement";
+		c.server.update().then(function(){
+			c.data.action = undefined;
+		});
+	};
+
+	c.add = function() {
+		c.data.action = "addElement";
+		c.server.update().then(function(){
+			c.data.action = undefined;
+		});
+	};
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gitapp_list</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>GitApp_List</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	data.numbers = [];
+	getList();
+
+	if(input){
+		
+		if(input.action == 'refreshList') {
+			data.numbers = [];
+			getList();
+		}
+
+		if(input.action == "addElement") {
+
+			var gitGlide = new GlideRecord('x_284063_git_app_application_table');
+			gitGlide.newRecord();
+			gitGlide.insert();
+
+			var insertRandIncident = new x_284063_git_app.GenerateRandomIncident();
+			insertRandIncident.execute(gitGlide);
+
+			data.numbers = input.numbers;
+			data.numbers.unshift(gitGlide.number.toString());
+		}
+
+		if(input.action == "removeElement") {
+			var removeGitEl = new GlideRecord('x_284063_git_app_application_table');
+			removeGitEl.get('number',input.number);
+			removeGitEl.deleteRecord();
+
+			data.numbers = input.numbers;
+			data.numbers.splice(input.index,1);
+		}
+	}
+
+	function getList() {
+
+		var gitAppList = new GlideRecord('x_284063_git_app_application_table');
+		gitAppList.orderByDesc('number');
+		gitAppList.query();
+
+		while(gitAppList.next()){
+			data.numbers.push(gitAppList.number.toString());
+		}
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-02-04 11:34:28</sys_created_on>
+        <sys_id>fd8a9d270fd72300ebdfba8ce1050e98</sys_id>
+        <sys_mod_count>69</sys_mod_count>
+        <sys_name>GitApp_List</sys_name>
+        <sys_package display_value="GitApp_SP" source="x_244499_gitapp_sp">041a19e30fd72300ebdfba8ce1050e36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GitApp_SP">041a19e30fd72300ebdfba8ce1050e36</sys_scope>
+        <sys_update_name>sp_widget_fd8a9d270fd72300ebdfba8ce1050e98</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-02-04 16:48:01</sys_updated_on>
+        <template><![CDATA[<div class="container">
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class="panel-group">
+        <div class="text-center">
+          <ul class="list-group">
+            <li id="refresh" class="list-group-item" ng-click="c.refresh()">
+              <span class="fa fa-refresh"></span> Refresh List
+            </li>
+            <li id="add" class="list-group-item" ng-click="c.add()">
+              <span class="fa fa-plus"></span> Add Record
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-body m-b-n">
+            <ul class="list-group">
+              <li class="list-group-item" 
+                  ng-repeat="x in c.data.numbers track by $index">    
+                <a> {{x}} 
+                  <div class="pull-right">
+                    <a href="" class="fa fa-edit"></a>&nbsp;
+                    <a href="" class="fa fa-remove text-danger" ng-click="c.remove(x,$index)"></a>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

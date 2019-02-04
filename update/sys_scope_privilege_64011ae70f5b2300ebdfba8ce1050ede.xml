@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <operation>create</operation>
+        <source_scope display_value="GitApp_SP">041a19e30fd72300ebdfba8ce1050e36</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-02-04 15:32:30</sys_created_on>
+        <sys_id>64011ae70f5b2300ebdfba8ce1050ede</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_284063_git_app_application_table</sys_name>
+        <sys_package display_value="GitApp_SP" source="x_244499_gitapp_sp">041a19e30fd72300ebdfba8ce1050e36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GitApp_SP">041a19e30fd72300ebdfba8ce1050e36</sys_scope>
+        <sys_update_name>sys_scope_privilege_64011ae70f5b2300ebdfba8ce1050ede</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-02-04 15:32:30</sys_updated_on>
+        <target_name>x_284063_git_app_application_table</target_name>
+        <target_scope display_value="Git App">5f73b595db53230083cc6a49489619f9</target_scope>
+        <target_type>sys_db_object</target_type>
+    </sys_scope_privilege>
+</record_update>
