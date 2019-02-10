@@ -7,20 +7,24 @@
 
 	$rootScope.$on('customEvent', function(event,data){}); 
 
+
 	spUtil.get("widget-form", {table: 'x_284063_git_app_application_table',
 														 sys_id: $rootScope.record_sys_id,
-														 view: ''}).then(function(response) {
-		c.catalogItemWidget = response;
-	});
+														 hideRelatedLists: 'true'}).then(
+		function(response) {
+			c.formWidget = response;
+		});
 
 	spUtil.recordWatch(
-		$scope, "x_284063_git_app_application_table", "", 
+		$scope, "x_284063_git_app_application_table", 'sys_id='+$rootScope.record_sys_id,
 		function(name, data) {
 			$timeout(function(){
 				angular.element('[ng-click*="buttonClicked"]').triggerHandler('click');
 			});
 		});
 
+	var test = angular.element('[ng-if="!data.hideRelatedLists"]').css({display:'none'});
+	console.log(test);
 	angular.element('.modal-footer').css({display:'none'});
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -39,23 +43,23 @@
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
-	
+
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-02-05 16:28:34</sys_created_on>
         <sys_id>2f676f370f976300ebdfba8ce1050e39</sys_id>
-        <sys_mod_count>203</sys_mod_count>
+        <sys_mod_count>241</sys_mod_count>
         <sys_name>GitApp_Record</sys_name>
         <sys_package display_value="GitApp_SP" source="x_244499_gitapp_sp">041a19e30fd72300ebdfba8ce1050e36</sys_package>
         <sys_policy/>
         <sys_scope display_value="GitApp_SP">041a19e30fd72300ebdfba8ce1050e36</sys_scope>
         <sys_update_name>sp_widget_2f676f370f976300ebdfba8ce1050e39</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-02-08 12:06:48</sys_updated_on>
+        <sys_updated_on>2019-02-08 17:25:43</sys_updated_on>
         <template><![CDATA[<div>
-  <sp-widget widget="c.catalogItemWidget"></sp-widget>
+  <sp-widget widget="c.formWidget"></sp-widget> 
 </div>]]></template>
     </sp_widget>
 </record_update>

@@ -4,7 +4,7 @@
         <client_script><![CDATA[function($timeout,spModal,$rootScope) {
 	/* widget controller */
 	var c = this;
-	
+
 	c.server.update().then(function(){
 		c.data.action = undefined;
 	});
@@ -32,8 +32,8 @@
 		});
 	};
 
-	c.edit = function(number,size) {
-		$rootScope.record_sys_id = number;
+	c.edit = function(sys_id,size) {
+		$rootScope.record_sys_id = sys_id;
 		$rootScope.$emit('customEvent', $rootScope.record_sys_id);
 
 		spModal.open({
@@ -48,7 +48,15 @@
 			});
 		});
 	};
-}]]></client_script>
+}
+
+
+/* spModal.open({
+		title: 'title',
+		widget: 'widget-form',
+		widgetInput: {table: 'incident', sys_id: '', view: 'defalt'},
+		buttons: ['']
+}); */]]></client_script>
         <controller_as>c</controller_as>
         <css>.custom-btn {
   border: 2px solid black;
@@ -124,7 +132,7 @@
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
         <name>GitApp_List</name>
         <option_schema/>
-        <public>true</public>
+        <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
 	/* populate the 'data' object */
@@ -191,14 +199,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-02-04 11:34:28</sys_created_on>
         <sys_id>fd8a9d270fd72300ebdfba8ce1050e98</sys_id>
-        <sys_mod_count>253</sys_mod_count>
+        <sys_mod_count>255</sys_mod_count>
         <sys_name>GitApp_List</sys_name>
         <sys_package display_value="GitApp_SP" source="x_244499_gitapp_sp">041a19e30fd72300ebdfba8ce1050e36</sys_package>
         <sys_policy/>
         <sys_scope display_value="GitApp_SP">041a19e30fd72300ebdfba8ce1050e36</sys_scope>
         <sys_update_name>sp_widget_fd8a9d270fd72300ebdfba8ce1050e98</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-02-08 12:13:20</sys_updated_on>
+        <sys_updated_on>2019-02-08 16:53:33</sys_updated_on>
         <template><![CDATA[<div class="container custom-container">
   <div class="btn-group btn-group-justified">
     <a class='btn success' id="add" ng-click="c.add()">
