@@ -4,24 +4,24 @@
         <css/>
         <draft>false</draft>
         <dynamic_title_structure/>
-        <id>gitapp_record</id>
+        <id>git_app_page</id>
         <internal>false</internal>
         <public>false</public>
         <roles/>
         <short_description/>
         <sys_class_name>sp_page</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2019-02-05 16:28:34</sys_created_on>
-        <sys_id>af676f370f976300ebdfba8ce1050e3b</sys_id>
+        <sys_created_on>2019-02-11 11:16:25</sys_created_on>
+        <sys_id>ad8911f50faf6700ebdfba8ce1050e49</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>gitapp_record</sys_name>
+        <sys_name>git_app_page</sys_name>
         <sys_package display_value="GitApp_SP" source="x_244499_gitapp_sp">041a19e30fd72300ebdfba8ce1050e36</sys_package>
         <sys_policy/>
         <sys_scope display_value="GitApp_SP">041a19e30fd72300ebdfba8ce1050e36</sys_scope>
-        <sys_update_name>sp_page_af676f370f976300ebdfba8ce1050e3b</sys_update_name>
+        <sys_update_name>sp_page_ad8911f50faf6700ebdfba8ce1050e49</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-02-05 16:28:34</sys_updated_on>
-        <title>GitApp_Record - Test Page</title>
+        <sys_updated_on>2019-02-11 11:16:25</sys_updated_on>
+        <title>Git App Page</title>
     </sp_page>
-    <sys_translated_text action="delete_multiple" query="documentkey=af676f370f976300ebdfba8ce1050e3b"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=ad8911f50faf6700ebdfba8ce1050e49"/>
 </record_update>
